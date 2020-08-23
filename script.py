@@ -4,7 +4,14 @@ from time import sleep
 ledLight = LED(21)
 igitionInput = DigitalInputDevice(20)
 sleepTime = 3.5
+ledOn = False
 
 while True:
-	igitionInput.wait_for_active()
-	ledLight.on()
+        if (ledOn):
+            ledLight.off()
+            ledOn = False
+        else:
+            ledLight.on()
+            ledOn = True
+
+        sleep(sleepTime)
